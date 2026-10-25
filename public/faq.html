@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FAQs | CIT Student Help Desk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-page="faq">
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/">
+        <span class="brand-mark">CIT</span>
+        <span>Student Help Desk<small>Cambridge Institute of Technology, KR Puram</small></span>
+      </a>
+      <nav class="nav">
+        <a href="/" data-page="home">Home</a>
+        <a href="/faq" data-page="faq">FAQs</a>
+        <a href="/admin" data-page="admin">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-hero">
+    <div class="wrap">
+      <h1 class="section-title">Frequently Asked Questions</h1>
+      <p class="section-sub">Search or pick a topic, then tap a question to see its answer.</p>
+    </div>
+  </div>
+
+  <section class="page-body">
+    <div class="wrap">
+      <div class="card" style="margin-bottom:20px">
+        <div class="toolbar" style="margin:0">
+          <div class="search-box">
+            <input id="search" type="search" placeholder="Search questions and answers..." aria-label="Search FAQs" autocomplete="off">
+          </div>
+          <div class="chips" id="chips"></div>
+        </div>
+      </div>
+
+      <p class="result-count" id="count" aria-live="polite"></p>
+      <div id="list"><div class="empty">Loading FAQs...</div></div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Can't find your answer? Email <strong>info@cambridge.edu.in</strong></span>
+      <span>Phone: 080-25618798 / 080-25618799</span>
+    </div>
+  </footer>
+
+  <script src="/common.js"></script>
+  <script src="/faq.js"></script>
+</body>
+</html>

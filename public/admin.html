@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin | CIT Student Help Desk</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-page="admin">
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/">
+        <span class="brand-mark">CIT</span>
+        <span>Student Help Desk<small>Cambridge Institute of Technology, KR Puram</small></span>
+      </a>
+      <nav class="nav">
+        <a href="/" data-page="home">Home</a>
+        <a href="/faq" data-page="faq">FAQs</a>
+        <a href="/admin" data-page="admin">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Login (shown when not signed in) -->
+  <div class="wrap" id="loginView" hidden>
+    <div class="card login-card">
+      <div class="lock">🔐</div>
+      <h1 class="section-title">Admin sign in</h1>
+      <p class="section-sub">Only administrators can add or edit FAQs.</p>
+      <form id="loginForm">
+        <label for="password">Password</label>
+        <input id="password" type="password" autocomplete="current-password" required>
+        <div style="margin-top:18px"><button class="btn" type="submit" style="width:100%">Sign in</button></div>
+        <div class="alert err" id="loginMsg" hidden></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Dashboard (shown when signed in) -->
+  <section id="adminView" hidden>
+    <div class="wrap">
+      <div class="admin-bar">
+        <div>
+          <h1 class="section-title">Admin dashboard</h1>
+          <span class="badge">Signed in as admin</span>
+        </div>
+        <button class="btn ghost small" id="logoutBtn">Sign out</button>
+      </div>
+
+      <div class="admin-grid">
+        <!-- Add FAQ -->
+        <div class="card">
+          <h2 class="section-title" style="font-size:19px">Add a new FAQ</h2>
+          <p class="hint">A code like CIT026 is generated automatically. It shows on the FAQ page right away.</p>
+          <form id="addForm">
+            <label for="addCategory">Category</label>
+            <input id="addCategory" list="categoryList" placeholder="e.g. Academics & Exams" maxlength="50">
+            <label for="addQuestion">Question *</label>
+            <input id="addQuestion" maxlength="1000" placeholder="What students ask">
+            <label for="addAnswer">Answer *</label>
+            <textarea id="addAnswer" maxlength="5000" placeholder="Clear, short answer"></textarea>
+            <div style="margin-top:16px"><button class="btn" type="submit" id="addBtn">Add FAQ</button></div>
+            <div class="alert" id="addMsg" hidden></div>
+          </form>
+        </div>
+
+        <!-- Upload Excel -->
+        <div class="card">
+          <h2 class="section-title" style="font-size:19px">Upload FAQs from Excel</h2>
+          <p class="hint">Columns: <strong>FAQ_ID, Category, Question, Answer</strong> (same format as cit_faq.xlsx). Existing codes are updated, new codes are added, rows with a missing question or answer are skipped.</p>
+          <div class="drop" style="margin-top:14px">
+            <input type="file" id="fileInput" accept=".xlsx,.xls,.csv">
+            <p class="hint" id="filePreview">No file selected</p>
+          </div>
+          <div style="margin-top:16px"><button class="btn" id="uploadBtn" disabled>Upload to Salesforce</button></div>
+          <div class="alert" id="uploadMsg" hidden></div>
+          <ul class="result-list" id="uploadDetails"></ul>
+        </div>
+
+        <!-- Manage -->
+        <div class="card full">
+          <div class="admin-bar" style="margin-bottom:12px">
+            <h2 class="section-title" style="font-size:19px;margin:0">All FAQs <span class="hint" id="manageCount"></span></h2>
+            <input id="manageSearch" type="search" placeholder="Filter..." style="max-width:260px">
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Code</th><th>Category</th><th>Question</th><th></th></tr></thead>
+              <tbody id="manageBody"><tr><td colspan="4">Loading...</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Edit dialog -->
+  <dialog id="editDialog">
+    <form id="editForm">
+      <h2 class="section-title" style="font-size:19px">Edit FAQ <span class="hint" id="editCode"></span></h2>
+      <label for="editCategory">Category</label>
+      <input id="editCategory" list="categoryList" maxlength="50">
+      <label for="editQuestion">Question *</label>
+      <input id="editQuestion" maxlength="1000">
+      <label for="editAnswer">Answer *</label>
+      <textarea id="editAnswer" maxlength="5000"></textarea>
+      <div class="alert err" id="editMsg" hidden></div>
+      <div class="dialog-actions">
+        <button class="btn ghost" type="button" id="editCancel">Cancel</button>
+        <button class="btn" type="submit" id="editSave">Save changes</button>
+      </div>
+    </form>
+  </dialog>
+
+  <datalist id="categoryList"></datalist>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Changes are saved to Salesforce (Student_FAQ__c) and appear on the public FAQ page instantly.</span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="/common.js"></script>
+  <script src="/admin.js"></script>
+</body>
+</html>

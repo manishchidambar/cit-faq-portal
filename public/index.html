@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CIT Student Help Desk</title>
+  <meta name="description" content="Answers to the questions Cambridge Institute of Technology students ask most.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-page="home">
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/">
+        <span class="brand-mark">CIT</span>
+        <span>Student Help Desk<small>Cambridge Institute of Technology, KR Puram</small></span>
+      </a>
+      <nav class="nav">
+        <a href="/" data-page="home">Home</a>
+        <a href="/faq" data-page="faq">FAQs</a>
+        <a href="/admin" data-page="admin">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow"><span class="dot"></span>Live answers for CIT students</span>
+        <h1>Every college question, <span class="grad">answered in seconds.</span></h1>
+        <p>Exams, attendance, placements, library, hostel and more. Verified answers from official CIT sources, all in one place.</p>
+        <form class="hero-search" id="heroSearch">
+          <input id="heroQuery" type="search" placeholder="Search e.g. attendance, library timings, SGPA" aria-label="Search FAQs">
+          <button class="btn" type="submit">Search</button>
+        </form>
+        <div class="quick">
+          <a href="/faq?q=attendance">Attendance</a>
+          <a href="/faq?q=pass">Passing marks</a>
+          <a href="/faq?q=internship">Internships</a>
+          <a href="/faq?q=library">Library</a>
+          <a href="/faq?q=hostel">Hostel</a>
+        </div>
+        <div class="stats">
+          <div><strong id="statFaqs">...</strong><span>Answered questions</span></div>
+          <div><strong id="statCats">...</strong><span>Topics covered</span></div>
+          <div><strong>24/7</strong><span>Always available</span></div>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <div class="float-card c1">
+          <div class="q"><i>📘</i>How much attendance do I need?</div>
+          <div class="a">At least 85 percent in every subject.</div>
+        </div>
+        <div class="float-card c2">
+          <div class="q"><i>📚</i>Library open during exams?</div>
+          <div class="a">Yes, till 10:00 PM on weekdays.</div>
+        </div>
+        <div class="float-card c3">
+          <div class="q"><i>💼</i>When do I do my internship?</div>
+          <div class="a">Start looking in 3rd year. It carries 6 credits.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="kicker">Explore</p>
+          <h2 class="section-title">Browse by topic</h2>
+          <p class="section-sub">Pick a topic to see every question in it.</p>
+        </div>
+      </div>
+      <div class="grid" id="topics"></div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="kicker">Popular</p>
+          <h2 class="section-title">Most asked right now</h2>
+          <p class="section-sub">Quick answers to what students ask first.</p>
+        </div>
+        <a class="btn ghost" href="/faq">See all FAQs →</a>
+      </div>
+      <div id="popular"></div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <p class="kicker">Behind the scenes</p>
+      <h2 class="section-title">How this help desk stays updated</h2>
+      <p class="section-sub">No one edits this page by hand. New answers flow in automatically.</p>
+      <div class="steps">
+        <div class="card step"><div class="num">1</div><h3>Excel sheet</h3><p>FAQs are collected in an Excel file from official CIT sources.</p></div>
+        <div class="card step"><div class="num">2</div><h3>UiPath robot</h3><p>A software robot reads every row, skips bad data and uploads it.</p></div>
+        <div class="card step"><div class="num">3</div><h3>Salesforce</h3><p>All FAQs are stored securely in Salesforce, with no duplicates.</p></div>
+        <div class="card step"><div class="num">4</div><h3>This website</h3><p>Pages read live from Salesforce. Admin updates show instantly.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span><strong>CIT Student Help Desk</strong> · Excel → UiPath → Salesforce → Web</span>
+      <span>Sources: engg.cambridge.edu.in, VTU 2022 scheme regulations</span>
+    </div>
+  </footer>
+
+  <script src="/common.js"></script>
+  <script src="/home.js"></script>
+</body>
+</html>
